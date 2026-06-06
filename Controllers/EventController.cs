@@ -34,5 +34,6 @@ namespace Assignment1_EventSignup.Controllers
         {
             return View(events);
         }
+        public IActionResult Manage(int id)
     }
 }
