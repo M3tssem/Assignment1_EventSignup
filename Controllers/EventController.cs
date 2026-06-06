@@ -35,5 +35,39 @@ namespace Assignment1_EventSignup.Controllers
             return View(events);
         }
         public IActionResult Manage(int id)
+        {
+            var selectedEvent = events.FirstOrDefault(e => e.Id == id);
+
+            if (selectedEvent == null)
+            {
+                return NotFound();
+            }
+
+            return View(selectedEvent);
+        }
+
+        [HttpPost]
+        public IActionResult Manage(int id, string name, string email)
+        {
+            var selectedEvent = events.FirstOrDefault(e => e.Id == id);
+
+            if (selectedEvent == null)
+            {
+                return NotFound();
+            }
+
+            selectedEvent.Attendees.Add(new Attendee
+            {
+                Name = name,
+                Email = email
+            });
+
+            ViewData["Message"] = "Attendee registered!";
+
+            return View(selectedEvent);
+        }
+
+
+
     }
 }
