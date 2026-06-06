@@ -17,7 +17,9 @@
                 <td>@e.Date.ToShortDateString()</td>
                 <td>@e.Location</td>
                 <td>
-                    <a class="btn btn-primary">
+                    <a asp-action="Manage"
+                     asp-route-id="@e.Id"
+                        class="btn btn-primary">
                         Manage Attendees
                     </a>
                 </td>
